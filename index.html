@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="./lib/jquery.min.js"></script>
+<script src="./lib/bootstrap.min.js"></script>
+  
+<script src="./lib/angular.min.js"></script>
+<script src="./lib/angular-resource.min.js"></script>
+<script src="./lib/angular-route.min.js"></script>
+<script src="./script/data.js"></script>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<div id="content">	
+		<div class="panel panel-default" style="width: 80%;">
+  			<div class="panel-heading">
+    		<h3 class="panel-title">Euler product</h3>
+  			</div>
+  			<div class="panel-body">
+    			Finds (first if many) maximum product of N consecutive integer (vector length) in array of size X*X towards any direction, including diagonal directions. The left upper corner is the origo, x increasing to right and y increasing down. 
+  			</div>
+
+		<form>
+			<div class="panel-body">
+			Euler vector size: {{DIMVECTOR}}
+				<div style="width: 200px;">
+					<input type="range" min="2" max="20" ng-model="DIMVECTOR"> 
+					
+				</div>
+			</div>
+
+			
+			<div class="panel-body">
+			Paste your X*X array of positive numbers here:
+				<br/>
+				<textarea name="eulerInput" style="border-radius: 4px; width:500px;" rows="20" placeholder="Paste euler table here" ng-model="eulerNums" required></textarea>
+			</div>
+				<br/>
+					
+				<button ng-click="animate();" >Find Euler number</button>
+				<br/>
+				<br/>
+				<span class="badge">{{ resultText }}</span>
+				
+				<br/>
+				Items in Euler vector: <span class="badge">{{ itemsText }}</span>
+				
+		</form>
+		</div>
+	</div>
+</div>
+
+
+</body>
+
+</html>
