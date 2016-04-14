@@ -8,84 +8,79 @@
 <script src="./lib/angular.min.js"></script>
 <script src="./lib/angular-resource.min.js"></script>
 <script src="./lib/angular-route.min.js"></script>
-<script src="./script/data.js"></script>
+<script src="./script/ctrl.js"></script>
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<div id="content">	
+			<div class="panel panel-default" style="width: 100%;">
+	  			<div class="panel-heading">
+	    		<h3 class="panel-title">Product of numbers</h3>
+	  			</div>
+	  			<div class="panel-body">
+	    			Finds (first if many) maximum product of N consecutive integer (vector length) in array of size X*X (<a data-toggle="modal" data-target="#myModal">example array</a>) towards any direction, including diagonal directions. The left upper corner is the origo, x increasing to right and y increasing down. 
+	    			<br/>
+	  			</div>
 
-<div ng-app="myApp" ng-controller="myCtrl">
-	<div id="content">	
-		<div class="panel panel-default" style="width: 100%;">
-  			<div class="panel-heading">
-    		<h3 class="panel-title">Product of numbers</h3>
-  			</div>
-  			<div class="panel-body">
-    			Finds (first if many) maximum product of N consecutive integer (vector length) in array of size X*X (<a data-toggle="modal" data-target="#myModal">example array</a>) towards any direction, including diagonal directions. The left upper corner is the origo, x increasing to right and y increasing down. 
-    			<br/>
-  			</div>
+	  			<!-- example dialog -->
+	  			<div class="modal fade" id="myModal" role="dialog">
+	    			<div class="modal-dialog">
+	  
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					    	<div class="modal-header">
+					       		<button type="button" class="close" data-dismiss="modal">&times;</button>
+					        	<h4 class="modal-title">Example of 4x4 array of positive integers</h4>
+					        </div>
+					        <div>
+					        	The numbers in array should be spaced by one with the linebreak at the end of the line. Leading zeros 
+					        	should be added so that all items has the same amount of numbers. All items should be positive integers. The amount of items in each row should be the same and there should be as many rows as there are items in a row. 
+					        </div>
+					        <div class="modal-body">
+					        	08 02 22 97 <br/>
+								49 49 99 40 <br/>
+								81 49 31 73 <br/>
+								52 70 95 23 <br/> 
+					        </div>
+		        			
+		        			<div class="modal-footer">
+		          				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        			</div>
+		      			</div>    
+	    			</div>
+	  			</div>
 
-  			<!-- example dialog -->
-  			<div class="modal fade" id="myModal" role="dialog">
-    			<div class="modal-dialog">
-  
-				    <!-- Modal content-->
-				    <div class="modal-content">
-				    	<div class="modal-header">
-				       		<button type="button" class="close" data-dismiss="modal">&times;</button>
-				        	<h4 class="modal-title">Example of 4x4 array of positive integers</h4>
-				        </div>
-				        <div>
-				        	The numbers in array should be spaced by one with the linebreak at the end of the line. Leading zeros 
-				        	should be added so that all items has the same amount of numbers. All items should be positive integers. The amount of items in each row should be the same and there should be as many rows as there are items in a row. 
-				        </div>
-				        <div class="modal-body">
-				        	08 02 22 97 <br/>
-							49 49 99 40 <br/>
-							81 49 31 73 <br/>
-							52 70 95 23 <br/> 
-				        </div>
-	        			
-	        			<div class="modal-footer">
-	          				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        			</div>
-	      			</div>    
-    			</div>
-  			</div>
-
-			<form>
-				<div class="panel-body">
-				Number of items in product [2..20]: {{vectorLen}}
-					<div style="width: 200px;">
-						<input type="range" min="2" max="20" ng-model="vectorLen" ng-change="calculateProducts();" > 
-						
+				<form>
+					<div class="panel-body">
+					Number of items in product [2..20]: {{vectorLen}}
+						<div style="width: 200px;">
+							<input type="range" min="2" max="20" ng-model="vectorLen" ng-change="calculateProducts();" > 
+							
+						</div>
 					</div>
-				</div>
 
-				
-				<div class="panel-body">
-					Paste your X*X array of positive numbers here:
-					<br/>
-					<textarea name="eulerInput" style="border-radius: 4px; width:100%;" rows="20" placeholder="Paste euler table here" ng-model="eulerNums" required></textarea>
-				</div>
-					<br/>
-						
-					<button ng-click="calculateProducts();" >Find maximum product of numbers</button>
-					<br/>
-					<br/>
-					<span class="badge">{{ resultText }}</span>
 					
-					<br/>
-					Items of the maximum product: <span class="badge">{{ itemsText }}</span>
-					
-			</form>
+					<div class="panel-body">
+						The X*X array of positive integers:
+						<br/>
+						<textarea name="eulerInput" style="border-radius: 4px; width:100%;" rows="20" placeholder="Create or paste your X*X array of positive numbers here" ng-model="eulerNums" required></textarea>
+					</div>
+						<br/>
+							
+						<button ng-click="calculateProducts();" >Find maximum product of numbers</button>
+						<br/>
+						<br/>
+						<div class="well well-sm">
+							<div>{{ resultText }}</div>
+							Items of the maximum product: <span class="badge">{{ itemsText }}</span>
+						</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
-
-
 </body>
-
 </html>
